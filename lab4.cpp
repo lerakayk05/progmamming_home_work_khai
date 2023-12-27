@@ -1,22 +1,32 @@
 #include <iostream>
-#include <locale.h>
 #include <cmath>
 
 using namespace std;
 
-//						Каюк Валерія 14 30
+// Каюк Валерія 10 32 18
 
-void if14();
-void geo30();
-void geo30s();
+void Swap();
+float EnterValue(float &X);
+void Swapping(float &X, float &Y);
+
+void Boolean32();
+int EnterBool(int& X);
+bool IsRightTriangle(int A, int B, int C);
+
+void Integers18();
+int EnterInteger(int &K);
+int Split(int &K);
+void ShowOut(int thousands, int &K);
+
 
 
 int main() {
 	int choice = 0; //Декларування змінної задля choice
-	cout << "Choice the task: " << endl <<
-		"1. If 14" << endl <<
-		"2. Geo 15" << endl <<
-		"3. Geo 15(Square and perimeter)" << endl;
+
+	cout << "Виберiть яку з цих задач будете вирiшувати: " << endl <<
+		"1. Swap " << endl <<
+		"2. Boolean32 " << endl <<
+		"3. Integers18 " << endl;
 
 	cin >> choice;
 
@@ -24,100 +34,122 @@ int main() {
 	{
 	case 1:
 	{
-		// if 14
-		if14();
+		// Proc 10
+		Swap();
 		break;
 	}
 	case 2:
 	{
-		// geo30(Належність точки до фігури)
-		geo30();
+		// Boolean 32
+		Boolean32();
 		break;
 	}
 	case 3:
 	{
-		//geo15.2(Периметр та площа)
-		geo30s();
+		// Integers 18
+		Integers18();
 		break;
 	}
 	default:
 	{
-		cout << "Wrong variant\n";
+		cout << "Такого варiанту немає\n";
 		break;
 	}
 	}
 }
 
-void if14()
+void Swap()
 {
-	// IF 14
-	cout << " IF 14" << endl;
+	cout << "PROC 10(Swap)" << endl;
+	float A, B, C, D;
+	EnterValue(A);
+	EnterValue(B);
+	EnterValue(C);
+	EnterValue(D);
+	Swapping(A, B);
+	Swapping(C, D);
+	Swapping(B, C);
 
-	float A, B, C;
-	cout << "Enter A, B and C: " << endl;
-	cin >> A >> B >> C;
-
-	// Перевірка на мінімальне число
-	float minimum = A;
-	if (B < minimum) {
-		minimum = B;
-	}
-	if (C < minimum) {
-		minimum = C;
-	}
-
-	//Перевірка на максимальне число
-	float maximum = A;
-	if (B > maximum) {
-		maximum = B;
-	}
-	if (C > maximum) {
-		maximum = C;
-	}
-
-	cout << "Lowest number is " << minimum << " and highiest number is " << maximum;
-
+	cout << "A = " << A << endl << "B = " << B << endl << "C = " << C << endl << "D = " << D <<endl;
 }
 
-void geo30() {
-	cout << " GEO 30" << endl;
-	
-	int r = 0, x = 0, y = 0;				 //Декларування змінних
-	bool ar1, ar2;							 //Декларування змінних типу bool
-
-	cout << "Enter a radius:  ";
-	cin >> r;
-
-	cout << "Enter X and Y:  ";
-	cin >> x >> y;
-
-	ar1 = pow((x + r), 2) + pow(y, 2) > pow(r, 2) && y > 0 && y < r && x >-1 * r && x < 0;		// Розрахунок знаходження першої фігури
-	ar2 = pow((x + r), 2) + pow(y, 2) < pow(r, 2) && y > -x - 2 * r && y < 0 && x < -1 * r;			 // Розрахунок знаходження другої фігури
-
-	if (ar1 || ar2) {
-		cout << "In region!" << endl;
+float EnterValue(float &X) {
+	cout << "Enter a number: ";
+	cin >> X;
+	if (cin) {
+		return X;
 	}
 	else {
-		cout << "Out of region!";
+		cout << "Wrong number, by default set 5" << endl;
+		return X = 5;
 	}
 }
 
-void geo30s() {
-	int r, x, y;
-	const float pi = 3.14;
-	cout << "Enter a radius: ";
-	cin >> r;
+void Swapping(float&X, float&Y)
+{
+	float temp = X;
+	X = Y;
+	Y = temp;
+}
 
-	float perimeter1 = (2 * pi * r) / 4 + 2 * r;
-	float perimeter2 = r + r + r * sqrt(2);
-	
+void Boolean32()
+{
+	cout << "BOOLEAN 32" << endl;
+	int A, B, C;
+	EnterBool(A);
+	EnterBool(B);
+	EnterBool(C);
 
-	float square1 = pow(r, 2) - ((pi * pow(r, 2)) / 4);
-	float square2 = pow(r,2)/2;
+	cout << "This triangle is right?: " << boolalpha << IsRightTriangle(A, B, C) << endl;
+}
 
-	cout << "Square of first figure = " << square1 << endl; // Виведення результату
-	cout << "Square of second figure = " << square2 << endl; // Виведення результату
+int EnterBool(int& X) {
+	cout << "Enter a number: ";
+	cin >> X;
+	if (cin) {
+		return X;
+	}
+	else {
+		cout << "Wrong number, by default set 7" << endl;
+		return X = 7;
+	}
+}
 
-	cout << "Perimeter of first figure = " << perimeter1 << endl; // Виведення результату
-	cout << "Perimeter of second figure = " << perimeter2 << endl; // Виведення результату
+bool IsRightTriangle(int A, int B, int C) {
+	return A * A + B * B == C * C || B * B + C * C == A * A || A * A + C * C == B * B;
+}
+
+void Integers18()
+{
+	cout << "INTEGER 18" << endl;
+	int K = 0;
+
+	EnterInteger(K);
+	int thousands = Split(K);
+	ShowOut(thousands, K);
+}
+
+int EnterInteger(int& K) {
+	cout << "Enter K: ";
+	cin >> K;
+	if (cin) {
+		if (K < 999) {
+			cout << "K less than 999, K equals 1000 now" << endl;
+			return K = 1000;
+		}
+		return K;
+	}
+	else {
+		cout << "K had been entered wrong! Returned 0 by default" << endl;
+		return K = 0;
+	}
+}
+
+int Split(int& K) {
+	int thousands = K / 1000;
+	return thousands;
+}
+
+void ShowOut(int thousands, int& K) {
+	cout << "Thousands in number " << K << " is " << thousands << endl;
 }
