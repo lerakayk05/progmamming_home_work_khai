@@ -12,7 +12,7 @@ void geo30s();
 
 
 int main() {
- int choice = 0; //Декларування змінної задля choice
+	int choice = 0; //Декларування змінної задля choice
 	cout << "Choice the task: " << endl <<
 		"1. If 14" << endl <<
 		"2. Geo 15" << endl <<
