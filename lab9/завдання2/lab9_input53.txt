@@ -1,0 +1,10 @@
+Hello, world!
+This is a test sentence.
+How are you?
+C++ is great; isn't it?
+Let's write some code.
+Count the punctuation marks!
+What's the time?
+Goodbye...
+Email me at example@example.com.
+The quick, brown fox jumps over the lazy dog.
